@@ -1,4 +1,4 @@
-﻿using ntx_netcore.Models;
+﻿using ntx_netcore.Data;
 using System.Collections.Generic;
 
 namespace ntx_netcore.Services
@@ -7,5 +7,6 @@ namespace ntx_netcore.Services
     {
         IEnumerable<Restaurant> GetAll();
         Restaurant Get(int id);
+        Restaurant Add(Restaurant newRestaurant);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ntx_netcore.Models;
+using ntx_netcore.Data;
 using ntx_netcore.Services;
 using System;
 using System.Collections.Generic;
@@ -32,6 +32,18 @@ namespace ntx_netcore.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return new ObjectResult(model);
+        }
+
+        [HttpPost]
+        public IActionResult Create(Restaurant model)
+        {
+            var newRestaraunt = new Restaurant();
+            newRestaraunt.Name = model.Name;
+            newRestaraunt.Id = model.Id;
+
+            newRestaraunt = _restaurantData.Add(newRestaraunt);
+
+            return new ObjectResult(_restaurantData.GetAll());
         }
     }
 }
